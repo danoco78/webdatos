@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:webdatos/helpers/http_helper.dart';
+import 'package:webdatos/movies/detail_page.dart';
+import 'package:webdatos/movies/list_page.dart';
 
 // e23ca5781aa7165ba8d00788359eccf2
 // https://api.themoviedb.org/3/movie/550?api_key=e23ca5781aa7165ba8d00788359eccf2
@@ -10,20 +11,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  void myrequest() {
-    HttpHelper.getPopular();
-  }
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    myrequest();
-
     return MaterialApp(
-        title: 'Flutter Demo',
-        home: Scaffold(
-          appBar: AppBar(title: Text("Datos web")),
-          body: Text("Hola"),
-        ));
+        title: 'Peliculas',
+        initialRoute: ListPage.ROUTE,
+        routes: {
+          ListPage.ROUTE: (_) => ListPage(),
+          DetailPage.ROUTE: (_) => DetailPage()
+        });
   }
 }

@@ -1,6 +1,4 @@
-import 'dart:ffi';
-
-class Movie {
+class MovieModel {
   int id;
   String title;
   String posterPath;
@@ -15,7 +13,7 @@ class Movie {
   int voteCount;
   double voteAverage;
 
-  Movie(
+  MovieModel(
       {this.id,
       this.title,
       this.posterPath,
@@ -30,7 +28,7 @@ class Movie {
       this.voteCount,
       this.voteAverage});
 
-  Movie.fromJson(Map<String, dynamic> movieMap) {
+  MovieModel.fromJson(Map<String, dynamic> movieMap) {
     this.id = movieMap['id'];
     this.title = movieMap['title'];
     this.posterPath = movieMap['poster_path'];
