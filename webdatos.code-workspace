@@ -4,5 +4,27 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"todo-tree.general.tags": [
+			"BUG",
+			"HACK",
+			"FIXME",
+			"TODO",
+			"FIXED",
+			"COMPLETE"
+		],
+		"todo-tree.highlights.customHighlight": {
+
+			"BUG": {
+				"icon": "bug"
+			},
+			"FIXME": {
+				"icon": "flame",
+				"foreground": "black",
+				"iconColour": "yellow",
+				"gutterIcon": true
+			}
+		},
+		"todo-tree.highlights.useColourScheme": true
+	}
 }

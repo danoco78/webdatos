@@ -36,7 +36,8 @@ class _ListPageState extends State<ListPage> {
   }
 
   Future<List<Widget>> _dataList() async {
-    final MovieResponseModel movieResponseModel = await HttpHelper.getPopular();
+    final MovieResponseModel movieResponseModel =
+        await HttpHelper.getPopular(1);
 
     widgetMovies = movieResponseModel.movies.map((m) {
       var image;

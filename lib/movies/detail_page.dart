@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:webdatos/helpers/http_helper.dart';
 import 'package:webdatos/models/movie_model.dart';
+import 'package:webdatos/widgets/movies/horizontal_movies.dart';
 
 class DetailPage extends StatelessWidget {
   static const ROUTE = '/detail';
@@ -43,7 +44,7 @@ class DetailPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                         child: Image.network(
                           imagePosterPath,
-                          width: 60,
+                          width: 50,
                         ),
                       ),
                       Expanded(
@@ -59,7 +60,7 @@ class DetailPage extends StatelessWidget {
                               allowHalfRating: true,
                               itemBuilder: (context, _) {
                                 return Icon(
-                                  Icons.star,
+                                  Icons.movie_sharp,
                                   color: Colors.yellow,
                                 );
                               },
@@ -86,6 +87,24 @@ class DetailPage extends StatelessWidget {
                     movie.overview,
                     textAlign: TextAlign.justify,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      "Top 15",
+                      style:
+                          TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                  FutureBuilder(
+                    future: HttpHelper.getTop(),
+                    builder: (_, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        return HorizontalMovies(
+                            movieResponseModel: snapshot.data);
+                      }
+                      return SizedBox();
+                    },
+                  )
                 ],
               ),
             ),

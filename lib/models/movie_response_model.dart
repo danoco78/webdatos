@@ -11,4 +11,9 @@ class MovieResponseModel {
     this.movies = List<MovieModel>.from(
         movieResponseMap["results"].map((m) => MovieModel.fromJson(m)));
   }
+
+  MovieResponseModel.empty() {
+    this.movies = [];
+    this.page = 1;
+  }
 }
