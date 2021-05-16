@@ -9,9 +9,12 @@ import 'package:webdatos/widgets/movies/horizontal_movies.dart';
 class DetailPage extends StatelessWidget {
   static const ROUTE = '/detail';
 
+  final MovieModel movie;
+  const DetailPage({@required this.movie});
+
   @override
   Widget build(BuildContext context) {
-    final MovieModel movie = ModalRoute.of(context).settings.arguments;
+    //final MovieModel movie = ModalRoute.of(context).settings.arguments;
 
     var imageBackdropPath, imagePosterPath;
     movie.backdropPath == null

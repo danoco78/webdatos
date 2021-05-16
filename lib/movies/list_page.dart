@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webdatos/helpers/custom_transition_route.dart';
 import 'package:webdatos/helpers/http_helper.dart';
 import 'package:webdatos/models/movie_response_model.dart';
 import 'package:webdatos/movies/detail_page.dart';
@@ -107,8 +108,58 @@ class _ListPageState extends State<ListPage> {
                           '\n' +
                           m.overview),
                       onTap: () {
-                        Navigator.pushNamed(context, DetailPage.ROUTE,
-                            arguments: m);
+                        // Metodo de navegación por nombre
+                        // Navigator.pushNamed(context, DetailPage.ROUTE,
+                        //     arguments: m);
+
+                        // Metodo de navegación por defecto de flutter
+                        // Navigator.push(context, MaterialPageRoute(builder: (_) {
+                        //   return DetailPage(movie: m);
+                        // }));
+
+                        // Metodo de navegación con efectos de transitión
+                        // Navigator.push(
+                        //     context,
+                        //     PageRouteBuilder(
+                        //       pageBuilder: (_, Animation<double> animation,
+                        //           Animation<double> animationSecondary) {
+                        //         return DetailPage(movie: m);
+                        //       },
+                        //       transitionsBuilder: (_,
+                        //           Animation<double> animation,
+                        //           Animation<double> animationSecondary,
+                        //           Widget child) {
+                        //         // efecto  SizeTransition
+                        //         // return Align(
+                        //         //   alignment: Alignment.bottomLeft,
+                        //         //   child: SizeTransition(
+                        //         //       sizeFactor: animation, child: child),
+                        //         // );
+
+                        //         //efecto FadeTransition
+                        //         // return FadeTransition(
+                        //         //     opacity: animation, child: child);
+
+                        //         //efecto ScaleTransition
+                        //         return ScaleTransition(
+                        //             scale: animation, child: child);
+                        //       },
+                        //       transitionDuration: Duration(milliseconds: 500),
+                        //       reverseTransitionDuration:
+                        //           Duration(milliseconds: 500),
+                        //     ));
+
+                        // Navigator.push(
+                        //     context,
+                        //     CustomScaleTransitionRoute(
+                        //         DetailPage(movie: m), 500));
+
+                        Navigator.push(
+                            context,
+                            CustomTRansitionRoute(
+                              transitionType: TransitionType.fade,
+                              widget: DetailPage(movie: m),
+                            ));
                       },
                     ),
                   );
